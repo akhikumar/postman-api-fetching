@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+     <link rel="stylesheet" href="prism.css">
+    <title>Postman API</title>
+
+    <style>
+        #responsePre{
+            max-height: 1000px;
+        }
+        body{
+            background: url(/bg3.jpg) no-repeat center center;
+            background-size: cover;
+        }
+        h1{
+            color: #b00855;
+        }
+        label{
+            color: #069a6a;
+            /* color: #a61009; */
+            font-size: 20px;
+            font-weight: bolder;
+        }
+        input{
+            color: #069a6a;
+            background-color: #305d81;
+        }
+        #headTime{
+           display: flex;
+           /* position: relative; */
+
+
+        }
+        .time1{
+            position: relative;
+            right: 25px;
+            top: 5px;
+            /* border: 2px solid rgb(48, 208, 230); */
+            border-radius: 10px;
+            height: 36px;
+            width: 227px;
+            background-color: #305d81;
+            color: #069a6a;
+        }
+
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Postman</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+     <div id="headTime">
+         <div class="container my-3">
+
+        <h1>Welcome to postman Api call</h1>
+    </div>
+    <div class=" time1" id="showTime"></div>
+</div> 
+    <div class="container">
+        <!-- url Tpye Box -->
+
+        <div class="mb-3 row">
+            <label for="url" style="font-size: 23px;" class="col-sm-2 col-form-label">URL</label>
+            <div class="col-sm-10">
+                <input type="text" style="background-color: #153a58; color: #069a6a;" class="form-control" id="url" placeholder="Enter your url here">
+            </div>
+        </div>
+
+        <!-- Request Tpye Box -->
+
+        <fieldset class="form-group">
+            <div class="row">
+                <legend style="color: #069a6a; font-size: 25px;  font-weight: bolder; " class="col-form-label col-sm-2 pt-0">Request Type</legend>
+                <div class="col-sm-10">
+                    <div class="form-check">
+                        <input style="background-color: #153a58; color: #069a6a;" class="form-check-input" type="radio" name="requestType" id="GET" value="GET" checked>
+                        <label class="form-check-label" for="get">
+                            GET
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input style="background-color: #153a58; color: #069a6a;" class="form-check-input" type="radio" name="requestType" id="POST" value="POST" checked>
+                        <label class="form-check-label" for="post">
+                            POST
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <!-- Content Tpye Box -->
+
+        <fieldset class="form-group my-3">
+            <div class="row">
+                <legend style="color: #069a6a; font-size: 25px;  font-weight: bolder; " class="col-form-label col-sm-2 pt-0">Content Type</legend>
+                <div class="col-sm-10">
+                    <div class="form-check">
+                        <input style="background-color: #153a58; color: #069a6a;" class="form-check-input" type="radio" name="contentType" id="jsonRadio" value="JSON" checked>
+                        <label class="form-check-label" for="get">
+                            JSON
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input style="background-color: #153a58; color: #069a6a;" class="form-check-input" type="radio" name="contentType"  id="paramsRadio" value="PARAMS">
+                        <label class="form-check-label" for="post">
+                            coustom parameters
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+        <!--parameter Box - This will hide on clicking the json type written in content type  -->
+        <div id="parametersBox">
+
+            <div class="row">
+                <label for="url" class="col-sm-2 col-form-label">Custom parameter 1</label>
+
+                <div class="col-4">
+                    <input type="text" style="background-color: #153a58; color: #069a6a;" class="form-control" id="parameterKey1" placeholder="Enter parameter 1 key">
+                </div>
+                <div class="col-4">
+                    <input type="text" style="background-color: #153a58; color: #069a6a;" class="form-control" id="parameterValue1" placeholder="Enter parameter 1 key">
+                </div>
+                <button style="background-color: #305d81; border: none;" class="btn btn-primary col-sm-1 col-form-label" id="parameterButton">+</button>
+            </div>
+            <div id="params"></div>
+        </div>
+
+
+
+        <!-- request json Box -This will hide on clicking the custom parameter box section -->
+
+        <div id="requestJsonBox">
+            <div class="row g-3 my-3">
+                <label for="url" style="font-size: 23px;" class="col-sm-2 col-form-label">Enter request json</label>
+                <div class="col-8">
+                    <textarea style="background-color: #153a58; color: #069a6a;" class="form-control " placeholder="write josn here" id="jsonValue"></textarea>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- submit button - will fetch api  -->
+        <button style="background-color: #305d81; border: none;" class="btn btn-primary my-3" id="submit">submit</button>
+
+
+        <!-- resopnse json Box- section and you were enjoy very much -->
+        <div id="responseJsonBox">
+            <div class="row g-3 my-3">
+                <label for="url" style="color: #069a6a; font-size: 25px;  font-weight: bolder; " class="col-sm-2 col-form-label">Response</label>
+                <div class="col-8">
+                    <!-- <textarea class="form-control " id="responseJson" placeholder="Your response will appear here"
+                        id="floatingTextarea2"></textarea> -->
+                        <pre id='responsePre' class="language-javascript"> <code id='responsePrism' class="language-javascript"> Your response will appear here </code> </pre>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+    -->
+
+    <script src="/index.js"></script>
+    <script src="/prism.js"></script>
+    <script src="/wall_clock.js"></script>
+</body>
+
+</html>
